@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePageRequest;
 use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 class PageController extends Controller {
@@ -54,12 +55,14 @@ class PageController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int $id
+	 * @param  string $slug
 	 *
 	 * @return Response
 	 */
-	public function edit($id) {
-		//
+	public function edit($slug) {
+		$page = Page::where('slug', $slug)->first();
+
+		return view('admin.pages.edit')->with('page', $page);
 	}
 
 	/**
@@ -70,7 +73,11 @@ class PageController extends Controller {
 	 * @return Response
 	 */
 	public function update($id) {
-		//
+
+		$page = Page::findOrFail($id);
+		$page->update(Input::all());
+
+		return Redirect::to('pages');
 	}
 
 	/**

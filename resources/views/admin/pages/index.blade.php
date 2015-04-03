@@ -16,6 +16,7 @@
 	    <td>{{$page->parent_page_name}}</td>
 	    <td>
 		    <a href="{{url('pages/'.$page->slug)}}" class="btn btn-xs btn-primary" target="_blank">view</a>
+		    <a href="{{url('pages/'.$page->slug.'/edit')}}" class="btn btn-xs btn-primary">edit</a>
 	    </td>
     </tr>
     @endforeach
