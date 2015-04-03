@@ -1,10 +1,11 @@
 $(document).ready(
-    function()
-    {
+    function () {
         $('textarea').redactor({
-            imageUpload: '../demo/scripts/image_upload.php',
-            fileUpload: '../demo/scripts/file_upload.php',
-            imageGetJson: '../demo/json/data.json'
+            minHeight: 300,
+            maxHeight: 800,
+            imageUpload: '../upload_file?_token=' + $("input[name='_token']").val(),
+            fileUpload: '../upload_file?_token=' + $("input[name='_token']").val(),
+            imageGetJson: '../upload_file'
         });
     }
 );
