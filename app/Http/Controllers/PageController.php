@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePageRequest;
+use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PageController extends Controller {
 
@@ -14,7 +16,8 @@ class PageController extends Controller {
 	 */
 	public function index()
 	{
-
+		$pages = Page::all();
+		return view('admin.pages.index')->with('pages', $pages);
 	}
 
 	/**
@@ -34,8 +37,8 @@ class PageController extends Controller {
 	 */
 	public function store(StorePageRequest $request)
 	{
-		dd('ok');
-		dd($request);
+		Page::create($request->all());
+		return Redirect::to('pages');
 	}
 
 	/**

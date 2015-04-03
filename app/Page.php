@@ -18,4 +18,11 @@ class Page extends Model {
 		'meta_canonical'
 	];
 
+	public function getParentPageNameAttribute(){
+		$parent = Page::find($this->attributes['parent_page']);
+		if(isset($parent))
+			return $parent->name;
+
+		return "None";
+	}
 }
