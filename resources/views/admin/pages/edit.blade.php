@@ -4,7 +4,7 @@
 
 @include('admin.partials.errors')
 
-{!! Form::model($page, ['route'=>['pages.update', $page->id], 'method'=>'put']) !!}
+{!! Form::model($page, ['route'=>['admin.pages.update', $page->id], 'method'=>'put']) !!}
 <!-- Title field -->
 <div class="form-group">
 	<label for="title" class="control-label">Title:</label>

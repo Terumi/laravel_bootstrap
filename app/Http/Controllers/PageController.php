@@ -24,7 +24,7 @@ class PageController extends Controller {
 	 * Show the form for creating a new resource.
 	 * @return Response
 	 */
-	public function create() {
+	public function getCreate() {
 		return view('admin.pages.create');
 	}
 
@@ -35,7 +35,7 @@ class PageController extends Controller {
 	public function store(StorePageRequest $request) {
 		Page::create($request->all());
 
-		return Redirect::to('pages');
+		return Redirect::to('admin/pages');
 	}
 
 	/**
@@ -77,7 +77,7 @@ class PageController extends Controller {
 		$page = Page::findOrFail($id);
 		$page->update(Input::all());
 
-		return Redirect::to('pages');
+		return Redirect::to('admin/pages');
 	}
 
 	/**
@@ -91,7 +91,7 @@ class PageController extends Controller {
 		$page = Page::findOrFail($id);
 		$page->delete();
 
-		return Redirect::to('pages');
+		return Redirect::to('admin/pages');
 	}
 
 }

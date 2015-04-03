@@ -17,9 +17,9 @@
 	    <td>
 		    <ul class="list-inline list-btns">
 			    <li><a href="{{url('pages/'.$page->slug)}}" class="btn btn-xs btn-primary" target="_blank">view</a></li>
-			    <li><a href="{{url('pages/'.$page->slug.'/edit')}}" class="btn btn-xs btn-primary">edit</a></li>
+			    <li><a href="{{url('admin/pages/'.$page->slug.'/edit')}}" class="btn btn-xs btn-primary">edit</a></li>
 			    <li>
-				    {!! Form::open(['route' => ['pages.destroy', $page->id], 'method'=>'delete']) !!}
+				    {!! Form::open(['route' => ['admin.pages.destroy', $page->id], 'method'=>'delete']) !!}
 				    <button type="submit" class="btn btn-xs btn-danger">delete</button>
 				    {!! Form::close() !!}
 			    </li>
