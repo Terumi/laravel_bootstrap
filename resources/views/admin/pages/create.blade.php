@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 @section('content')
 <h1>Create page</h1>
-{!! Form::open() !!}
+
+@include('admin.partials.errors')
+
+{!! Form::open(['route'=>'pages.store', 'method'=>'post']) !!}
 <!-- Title field -->
 <div class="form-group">
 	<label for="title" class="control-label">Title:</label>
@@ -35,7 +38,7 @@
 <!-- Parent_id Field -->
 <div class="form-group">
 	{!!Form::label('parent_page', 'Parent page:')!!}
-	{!!Form::select('parent_page', [1=>'test', 2=>'test2'], null, array('class'=>'form-control') ) !!}
+	{!!Form::select('parent_page', [0=>'none'] + [1=>'test', 2=>'test2'], null, array('class'=>'form-control') ) !!}
 </div>
 
 <!-- Priority field -->
@@ -70,7 +73,7 @@
 
 <!-- Submit button -->
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">Save</button>
+	<button type="submit" class="btn btn-primary">Save</button>
 </div>
 
 {!! Form::close() !!}

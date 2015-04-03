@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\StorePageRequest;
 use Illuminate\Http\Request;
 
 class PageController extends Controller {
@@ -32,9 +32,10 @@ class PageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(StorePageRequest $request)
 	{
-		//
+		dd('ok');
+		dd($request);
 	}
 
 	/**
