@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{Config::get('site_info')['name']}}</a>
+            <a class="navbar-brand" href="{{url('admin')}}">{{Config::get('site_info')['name']}}</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
