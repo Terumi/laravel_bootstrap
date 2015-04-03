@@ -1,1 +1,1 @@
-laravel bootstrap
+laravel bootstrap common setup
