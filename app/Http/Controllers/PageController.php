@@ -24,7 +24,7 @@ class PageController extends Controller {
 	 * Show the form for creating a new resource.
 	 * @return Response
 	 */
-	public function getCreate() {
+	public function create() {
 		return view('admin.pages.create');
 	}
 

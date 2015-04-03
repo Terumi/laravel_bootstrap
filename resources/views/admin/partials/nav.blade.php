@@ -16,8 +16,8 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{url('pages')}}">View</a></li>
-						<li><a href="{{url('pages/create')}}#">Create</a></li>
+						<li><a href="{{url('admin/pages')}}">View</a></li>
+						<li><a href="{{url('admin/pages/create')}}#">Create</a></li>
 					</ul>
 				</li>
 				<!--<li><a href="#">Link</a></li>-->

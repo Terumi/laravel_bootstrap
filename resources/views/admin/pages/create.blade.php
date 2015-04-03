@@ -4,7 +4,7 @@
 
 @include('admin.partials.errors')
 
-{!! Form::open(['route'=>'pages.store', 'method'=>'post']) !!}
+{!! Form::open(['route'=>'admin.pages.store', 'method'=>'post']) !!}
 <!-- Title field -->
 <div class="form-group">
 	<label for="title" class="control-label">Title:</label>
