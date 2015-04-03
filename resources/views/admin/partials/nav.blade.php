@@ -23,6 +23,7 @@
 				<!--<li><a href="#">Link</a></li>-->
 			</ul>
 
+			@if(Auth::user())
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->email }}
@@ -32,6 +33,7 @@
 					</ul>
 				</li>
 			</ul>
+			@endif
 		</div>
 
 	</div>
