@@ -13,6 +13,7 @@
 	<script src="{{asset('js/admin.js')}}"></script>
 </head>
 <body>
+@include('admin.partials.nav')
 <div class="container">
 	@yield('content')
 </div>
