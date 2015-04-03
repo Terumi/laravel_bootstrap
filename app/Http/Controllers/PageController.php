@@ -14,7 +14,7 @@ class PageController extends Controller {
 	 */
 	public function index()
 	{
-		//
+
 	}
 
 	/**
@@ -24,7 +24,7 @@ class PageController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('pages.create');
 	}
 
 	/**
@@ -45,7 +45,7 @@ class PageController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+
 	}
 
 	/**
