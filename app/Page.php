@@ -18,11 +18,15 @@ class Page extends Model {
 		'meta_canonical'
 	];
 
-	public function getParentPageNameAttribute(){
+	public function getParentPageNameAttribute() {
 		$parent = Page::find($this->attributes['parent_page']);
-		if(isset($parent))
+		if (isset( $parent ))
 			return $parent->name;
 
 		return "None";
+	}
+
+	public function subPages() {
+		return $this->hasMany('App\Page', 'parent_id');
 	}
 }

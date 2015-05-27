@@ -1,6 +1,13 @@
 <?php
 
-	Route::get('/', 'WelcomeController@index');
+	//Route::get('/', 'WelcomeController@index');
+	use App\Page;
+
+	Route::get('/', function(){
+		$page = Page::first();
+		return view('pages.page')->with('page', $page);
+
+	});
 
 	Route::get('home', 'HomeController@index');
 
