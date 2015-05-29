@@ -16,6 +16,7 @@ class CreatePagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('parent_id');
+			$table->string('type')->default(0);
 			$table->string('title');
 			$table->string('menu_title');
 			$table->string('slug');

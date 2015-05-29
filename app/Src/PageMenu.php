@@ -21,7 +21,7 @@
 
 		public function dig($page, $level) {
 			if($page->subPages->count()){
-				$this->html .= "<li class='dropdown'>";
+				$this->html .= "<li>";
 			} else {
 				$this->html .= "<li>";
 			}
