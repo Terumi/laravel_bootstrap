@@ -5,6 +5,14 @@
 @include('admin.partials.errors')
 
 {!! Form::model($page, ['route'=>['admin.pages.update', $page->id], 'method'=>'put']) !!}
+
+<!--  field -->
+<div class="form-group">
+	<label for="type" class="control-label">Page Type:</label>
+	{!! Form::select('type', Config::get('page_types'), $page->type, ['class'=>'form-control', 'id'=> '']) !!}
+</div>
+
+
 <!-- Title field -->
 <div class="form-group">
 	<label for="title" class="control-label">Title:</label>
@@ -37,8 +45,8 @@
 
 <!-- Parent_id Field -->
 <div class="form-group">
-	{!!Form::label('parent_page', 'Parent page:')!!}
-	{!!Form::select('parent_page', [0=>'none'] + [1=>'test', 2=>'test2'], null, array('class'=>'form-control') ) !!}
+	{!!Form::label('parent_id', 'Parent page:')!!}
+	{!!Form::select('parent_id', $pages, null, array('class'=>'form-control') ) !!}
 </div>
 
 <!-- Priority field -->

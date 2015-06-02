@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class Page extends Model {
 
@@ -17,6 +18,11 @@ class Page extends Model {
 		'meta_description',
 		'meta_canonical'
 	];
+
+	public function getPageTypeAttribute(){
+		return Config::get('page_types')[$this->attributes['type']];
+	}
+
 
 	public function getParentPageNameAttribute() {
 		$parent = Page::find($this->attributes['parent_page']);
