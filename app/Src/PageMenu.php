@@ -46,28 +46,16 @@
 		}
 
 		private function digHtml($ancestors) {
-
-
-
 			$menu = '';
 			foreach ($ancestors as $page) {
 				if ($page->hasSubPages()) {
-					$menu .= $this->renderSubMenu($page);
+					$menu .= view('layouts.partials.sub-menu')->with('page', $page)->with('content', $this->digHtml($page->subPages));
 				} else {
 					$menu .= view('layouts.partials.menu-item')->with('page', $page);
-					//$menu .= $this->renderMenuItem($page);
 				}
 			}
 
 			return $menu;
-		}
-
-		private function renderSubMenu($page) {
-			return view('layouts.partials.sub-menu')->with('page', $page)->with('content', $this->digHtml($page->subPages));
-		}
-
-		private function renderMenuItem($page) {
-			return '<li><a href="#">' . $page->title . '</a></li>';
 		}
 
 	}
