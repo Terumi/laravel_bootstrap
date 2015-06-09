@@ -11,6 +11,14 @@
 			return Page::all();
 		}
 
+		public function getPageTree() {
+			$ancestors = $this->getTopLevelPages();
+			foreach($ancestors as $item){
+				$item->getChildren();
+			}
+			dd($ancestors);
+		}
+
 		public function findBySlug($slug) {
 			$page = Page::where('slug', $slug)->first();
 			if (!$page)
@@ -27,4 +35,10 @@
 
 			return $page;
 		}
+
+		public function getTopLevelPages() {
+			return Page::where('parent_id', 0)->get();
+		}
+
+
 	}

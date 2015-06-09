@@ -3,43 +3,31 @@
 	namespace App\Src;
 
 	use App\Page;
+	use App\Repositories\PageRepository;
 
 	class PageMenu {
 
-		private $html;
+		public $menuArray;
+		private $repository;
+
+		function __construct(PageRepository $repository) {
+			$this->repository = $repository;
+		}
 
 		public function getMenu() {
+			$ancestors       = $this->repository->getTopLevelPages();
+			$this->menuArray = $this->dig($ancestors);
 
-			$this->html = '<ul class="nav navbar-nav">';
-				$pages = Page::where('parent_id', 0)->get();
-				foreach ($pages as $page) {
-					$this->dig($page, 0);
-				}
-			$this->html .= '</ul>';
-			return $this->html;
+			return $this->menuArray;
 		}
 
-		public function dig($page, $level) {
-			if($page->subPages->count()){
-				$this->html .= "<li>";
-			} else {
-				$this->html .= "<li>";
+		public function dig($ancestors) {
+			$menu = [ ];
+			foreach ($ancestors as $page) {
+				$menu[$page->id] = $this->dig($page->subPages);
 			}
 
-
-			$level ++;
-
-			if($page->subPages->count()){
-				$this->html .= '<a href="#" class="dropdown-toggle">'. $page->menu_title . '</a>';
-				$this->html .= '<ul class="dropdown-menu" role="menu">';
-				foreach ($page->subPages as $sub_page) {
-					$this->dig($sub_page, $level);
-				}
-				$this->html .= '</ul>';
-			} else {
-				$this->html .= '<a href="#">'. $page->menu_title . '</a>';
-			}
-
-			$this->html .= "</li>";
+			return empty( $menu ) ? null : $menu;
 		}
+
 	}

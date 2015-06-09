@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\StorePageRequest;
 use App\Page;
 use App\Repositories\PageRepository;
+use App\Src\PageMenu;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +17,12 @@ class PageController extends Controller {
 	}
 
 	public function index() {
-		$pages = Page::all();
+
+		$pm   = new PageMenu($this->repository);
+		$menu = $pm->getMenu();
+		dd($menu);
+
+		$pages = $this->repository->getAll();
 
 		return view('admin.pages.index')->with('pages', $pages);
 	}
