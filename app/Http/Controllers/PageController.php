@@ -17,13 +17,7 @@ class PageController extends Controller {
 	}
 
 	public function index() {
-
-		$pm   = new PageMenu($this->repository);
-		$menu = $pm->getMenu();
-		dd($menu);
-
 		$pages = $this->repository->getAll();
-
 		return view('admin.pages.index')->with('pages', $pages);
 	}
 

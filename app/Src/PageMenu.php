@@ -12,22 +12,25 @@
 
 		function __construct(PageRepository $repository) {
 			$this->repository = $repository;
+			$this->menuArray  = $this->getMenu();
 		}
 
 		public function getMenu() {
-			$ancestors       = $this->repository->getTopLevelPages();
-			$this->menuArray = $this->dig($ancestors);
+			$ancestors = $this->repository->getTopLevelPages();
 
-			return $this->menuArray;
+			return $this->dig($ancestors);
 		}
 
 		public function dig($ancestors) {
 			$menu = [ ];
 			foreach ($ancestors as $page) {
-				$menu[$page->id] = $this->dig($page->subPages);
+				$menu[$page->id] = [
+					'slug'     => $page->slug,
+					'title'    => $page->title,
+					'children' => $this->dig($page->subPages)
+				];
 			}
 
 			return empty( $menu ) ? null : $menu;
 		}
-
 	}
