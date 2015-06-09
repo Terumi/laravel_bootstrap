@@ -33,4 +33,45 @@
 
 			return empty( $menu ) ? null : $menu;
 		}
+
+		public function getHtml() {
+
+			$menu = '<div class="dropdown"><a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">Dropdown <span class="caret"></span></a>';
+			$menu .= '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';
+			$menu .= $this->digHtml($this->repository->getTopLevelPages());
+			$menu .= '</ul>';
+
+			return $menu;
+
+		}
+
+		private function digHtml($ancestors) {
+			$menu = '';
+			foreach ($ancestors as $page) {
+				if ($page->hasSubPages()) {
+					$menu .= $this->renderSubMenu($page);
+				} else {
+					$menu .= $this->renderMenuItem($page);
+				}
+			}
+
+			return $menu;
+		}
+
+		private function renderSubMenu($page) {
+			$menu = '<li class="dropdown-submenu">' .
+			        '<a tabindex="-1" href="#">' .
+			        $page->title .
+			        '</a>';
+			$menu .= '<ul class="dropdown-menu">';
+			$menu .= $this->digHtml($page->subPages);
+			$menu .= "</ul></li>";
+
+			return $menu;
+		}
+
+		private function renderMenuItem($page) {
+			return '<li><a href="#">' . $page->title . '</a></li>';
+		}
+
 	}
