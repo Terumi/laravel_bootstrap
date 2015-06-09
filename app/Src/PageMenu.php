@@ -46,12 +46,16 @@
 		}
 
 		private function digHtml($ancestors) {
+
+
+
 			$menu = '';
 			foreach ($ancestors as $page) {
 				if ($page->hasSubPages()) {
 					$menu .= $this->renderSubMenu($page);
 				} else {
-					$menu .= $this->renderMenuItem($page);
+					$menu .= view('layouts.partials.menu-item')->with('page', $page);
+					//$menu .= $this->renderMenuItem($page);
 				}
 			}
 

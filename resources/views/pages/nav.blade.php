@@ -49,7 +49,7 @@
 	}
 </style>
 
-<div class="container">
+<!--<div class="container">
 	<div class="row">
 		<div class="dropdown">
 			<a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
@@ -77,9 +77,7 @@
 			</ul>
 		</div>
 	</div>
-</div>
-
-
+</div>-->
 
 {!! $menu !!}
 
