@@ -63,15 +63,7 @@
 		}
 
 		private function renderSubMenu($page) {
-			$menu = '<li class="dropdown-submenu">' .
-			        '<a tabindex="-1" href="#">' .
-			        $page->title .
-			        '</a>';
-			$menu .= '<ul class="dropdown-menu">';
-			$menu .= $this->digHtml($page->subPages);
-			$menu .= "</ul></li>";
-
-			return $menu;
+			return view('layouts.partials.sub-menu')->with('page', $page)->with('content', $this->digHtml($page->subPages));
 		}
 
 		private function renderMenuItem($page) {
