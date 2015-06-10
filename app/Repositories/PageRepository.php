@@ -13,7 +13,7 @@
 
 		public function getPageTree() {
 			$ancestors = $this->getTopLevelPages();
-			foreach($ancestors as $item){
+			foreach ($ancestors as $item) {
 				$item->getChildren();
 			}
 			dd($ancestors);
@@ -27,12 +27,13 @@
 			return $page;
 		}
 
-		public function findSubPageBySlug($parent_slug, $slug) {
-			$parent = $this->findBySlug($parent_slug);
-			$page = $parent->subPages->where('slug', $slug)->first();
-			if (is_null($page))
-				App::abort(404, 'Page not found');
+		public function findSubPageByTree($path_array) {
+			$page = $this->findBySlug($path_array[0]);
+			if (count($path_array) > 1) {
+				array_shift($path_array);
 
+				return $this->findSubPageByTree($path_array);
+			}
 			return $page;
 		}
 

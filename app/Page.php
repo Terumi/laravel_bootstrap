@@ -40,6 +40,15 @@ class Page extends Model {
 	}
 
 	public function parent() {
-		return $this->belongsTo('Page', 'parent_id');
+		return $this->belongsTo('App\Page', 'parent_id');
 	}
+
+	public function getPathAttribute(){
+		if($this->attributes['parent_id'] == 0)
+			return 'pages/'.$this->attributes['slug'];
+
+		return $this->parent->path.'/'.$this->attributes['slug'];
+
+	}
+
 }

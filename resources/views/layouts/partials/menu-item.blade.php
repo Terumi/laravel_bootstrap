@@ -1,1 +1,1 @@
-<li><a href="#">{{ $page->title }}</a></li>
+<li><a href="{{ url($page->path) }}">{{ $page->title }}</a></li>
