@@ -25,7 +25,7 @@
 					"title"            => $title,
 					"menu_title"       => $title,
 					"slug"             => slugify($title),
-					"body"             => $faker->text(250),
+					"body"             => $faker->text(rand(1000, 1940)),
 					"description"      => $faker->sentence(),
 					"priority"         => rand(0, 10),
 					"meta_content"     => "",

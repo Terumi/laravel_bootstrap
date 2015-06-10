@@ -1,9 +1,11 @@
 done: html menu, create templates
 done: add auto-menu
 done: add Page model path()
-todo: auto-generate url resolve
+done: auto-generate url resolve
+done: facebook like page / twitter
+done: 404 page template
+done: canonical url
 todo: add gallery
 todo: add news
-todo: facebook like page
-todo: 404 page template
 todo: mailer
+todo: multilingual

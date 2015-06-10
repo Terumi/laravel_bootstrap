@@ -45,7 +45,7 @@ class Page extends Model {
 
 	public function getPathAttribute(){
 		if($this->attributes['parent_id'] == 0)
-			return 'pages/'.$this->attributes['slug'];
+			return $this->attributes['slug'];
 
 		return $this->parent->path.'/'.$this->attributes['slug'];
 
