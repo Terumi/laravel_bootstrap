@@ -12,7 +12,7 @@
 			$parents = [];
 
 			foreach(range(0, 40) as $index){
-				$title = $faker->company();
+				$title =  $faker->company();
 				$parents[] = rand(0, 40);
 
 				/* echo */
