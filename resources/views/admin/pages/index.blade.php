@@ -1,33 +1,26 @@
 @extends('layouts.admin')
 @section('content')
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-	        <th>Page Name</th>
-	        <th>Parent Page</th>
-	        <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
     @foreach($pages as $page)
-    <tr>
-		<td>{{$page->title}}</td>
-	    <td>{{$page->parent_page_name}}</td>
-	    <td>
-		    <ul class="list-inline list-btns">
-			    <li><a href="{{url($page->path)}}" class="btn btn-xs btn-primary" target="_blank">view</a></li>
-			    <li><a href="{{url('admin/pages/'.$page->slug.'/edit')}}" class="btn btn-xs btn-primary">edit</a></li>
-			    <li>
-				    {!! Form::open(['route' => ['admin.pages.destroy', $page->id], 'method'=>'delete']) !!}
-				    <button type="submit" class="btn btn-xs btn-danger" data-confirm="Are you sure you want to delete this page?">delete</button>
-				    {!! Form::close() !!}
-			    </li>
-		    </ul>
-	    </td>
-    </tr>
+        @include('admin.pages.section')
     @endforeach
-    </tbody>
-</table>
+
+<script>
+	$('label.tree-toggler').click(function () {
+		$(this).parent().parent().children('ul.tree').toggle(150);
+	});
+</script>
+
+<style>
+	.nav-list {
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-bottom: 0;
+	}
+
+
+
+</style>
+
 
 @stop

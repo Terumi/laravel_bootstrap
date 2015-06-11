@@ -14,9 +14,9 @@
 		public function getPageTree() {
 			$ancestors = $this->getTopLevelPages();
 			foreach ($ancestors as $item) {
-				$item->getChildren();
+				$item->subPages();
 			}
-			dd($ancestors);
+			return $ancestors;
 		}
 
 		public function findBySlug($slug) {
