@@ -11,7 +11,7 @@ class Page extends Model {
 		'slug',
 		'body',
 		'description',
-		'parent_page',
+		'parent_id',
 		'priority',
 		'meta_content',
 		'meta_title',
