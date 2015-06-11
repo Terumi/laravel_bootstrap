@@ -11,6 +11,7 @@
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/redactor.min.js')}}"></script>
 	<script src="{{asset('js/admin.js')}}"></script>
+	<script src="{{asset('js/utils.js')}}"></script>
 </head>
 <body>
 @include('admin.partials.nav')

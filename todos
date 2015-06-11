@@ -5,7 +5,10 @@ done: auto-generate url resolve
 done: facebook like page / twitter
 done: 404 page template
 done: canonical url
+done: page title
+todo: page types
 todo: add gallery
 todo: add news
 todo: mailer
 todo: multilingual
+todo: admin - page hierarchy

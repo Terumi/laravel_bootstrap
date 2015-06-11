@@ -4,7 +4,7 @@
 
 	// home page
 	Route::get('/', function () {
-		$page = Page::find(15);
+		$page = Page::find(1);
 		return view('pages.page')->with('page', $page);
 	});
 
