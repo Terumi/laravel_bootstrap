@@ -1,6 +1,12 @@
 <?php
 
 	use App\Page;
+	use Illuminate\Support\Facades\Event;
+
+	Event::listen('illuminate.query', function($query)
+	{
+		var_dump($query);
+	});
 
 	// home page
 	Route::get('/', function () {

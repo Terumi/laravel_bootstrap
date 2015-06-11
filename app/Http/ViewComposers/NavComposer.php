@@ -14,7 +14,6 @@ class NavComposer {
 
 	public function compose(View $view)
 	{
-		$pages = Page::all();
 		$pm = new PageMenu(new PageRepository());
 		$view->with('menu', $pm->getHtml());
 	}

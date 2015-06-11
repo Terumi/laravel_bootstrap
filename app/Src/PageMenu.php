@@ -7,12 +7,10 @@
 
 	class PageMenu {
 
-		public $menuArray;
 		private $repository;
 
 		function __construct(PageRepository $repository) {
 			$this->repository = $repository;
-			$this->menuArray  = $this->getMenu();
 		}
 
 		public function getMenu() {
@@ -52,5 +50,4 @@
 
 			return $menu;
 		}
-
 	}

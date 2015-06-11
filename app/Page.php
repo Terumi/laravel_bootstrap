@@ -36,18 +36,19 @@ class Page extends Model {
 	}
 
 	public function hasSubPages() {
-		return $this->subPages->count() ? true : false;
+		$page = Page::where('parent_id', $this->attributes['id'])->first();
+		return !is_null($page);
 	}
 
 	public function parent() {
 		return $this->belongsTo('App\Page', 'parent_id');
 	}
 
-	public function getPathAttribute(){
-		if($this->attributes['parent_id'] == 0)
+	public function getPathAttribute() {
+		if ($this->attributes['parent_id'] == 0)
 			return $this->attributes['slug'];
 
-		return $this->parent->path.'/'.$this->attributes['slug'];
+		return $this->parent->path . '/' . $this->attributes['slug'];
 
 	}
 
