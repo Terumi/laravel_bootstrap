@@ -10,8 +10,8 @@
 
 	// home page
 	Route::get('/', function () {
-		$page = Page::find(44);
-		return view('pages.page')->with('page', $page);
+		//$page = Page::find(44);
+		return view('pages.home');
 	});
 
 	// controllers

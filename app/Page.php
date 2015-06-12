@@ -33,11 +33,13 @@ class Page extends Model {
 
 	public function subPages() {
 		return $this->hasMany('App\Page', 'parent_id');
+
 	}
 
 	public function hasSubPages() {
-		$page = Page::where('parent_id', $this->attributes['id'])->first();
-		return !is_null($page);
+		//$page = Page::where('parent_id', $this->attributes['id'])->first();
+		//return !is_null($page);
+		return true;
 	}
 
 	public function parent() {
