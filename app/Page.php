@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class Page extends Model {
 
@@ -33,25 +34,32 @@ class Page extends Model {
 
 	public function subPages() {
 		return $this->hasMany('App\Page', 'parent_id');
+	}
 
+	public function getSubPages($parent = false) {
+		$parent   = $parent ?: $this;
+		$subPages = $parent->subPages()->get();
+		foreach ($subPages as $subPage) {
+			$subPage->setRelation('subPages', $this->getSubPages($subPage));
+		}
+
+		return $subPages;
 	}
 
 	public function hasSubPages() {
-		//$page = Page::where('parent_id', $this->attributes['id'])->first();
-		//return !is_null($page);
-		return true;
+		$page = $this->subPages->first();
+
+		return !is_null($page);
 	}
 
 	public function parent() {
 		return $this->belongsTo('App\Page', 'parent_id');
 	}
 
-	public function getPathAttribute() {
+	public function getURIAttribute() {
 		if ($this->attributes['parent_id'] == 0)
 			return $this->attributes['slug'];
 
-		return $this->parent->path . '/' . $this->attributes['slug'];
-
+		return $this->parent->URI . '/' . $this->attributes['slug'];
 	}
-
 }

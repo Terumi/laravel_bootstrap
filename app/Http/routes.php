@@ -8,9 +8,24 @@
 		//var_dump($query);
 	});
 
+	//todo: put it somewhere nice
+	Page::created(function($page)
+	{
+		$page->path = $page->URI;
+		$page->save();
+	});
+
 	// home page
 	Route::get('/', function () {
-		//$page = Page::find(44);
+
+		/*$page = Page::find(1);
+
+		var_dump($page->subPages);
+		echo "<hr/>";
+
+		var_dump($page->load('subPages')->subPages);
+
+		dd('ok');*/
 		return view('pages.home');
 	});
 

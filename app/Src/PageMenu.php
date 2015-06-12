@@ -38,11 +38,12 @@
 			return $menu;
 		}
 
-		private function digHtml($ancestors) {
+		private function digHtml($ancestors, $sec = false) {
 			$menu = '';
+
 			foreach ($ancestors as $page) {
 				if ($page->hasSubPages()) {
-					$menu .= view('layouts.partials.sub-menu')->with('page', $page)->with('content', $this->digHtml($page->subPages));
+					$menu .= view('layouts.partials.sub-menu')->with('page', $page)->with('content', $this->digHtml($page->getSubPages(), true));
 				} else {
 					$menu .= view('layouts.partials.menu-item')->with('page', $page);
 				}

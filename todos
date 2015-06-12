@@ -7,6 +7,8 @@ done: 404 page template
 done: canonical url
 done: page title
 done: admin - page hierarchy
+done: home page
+todo: check conditional page section
 todo: fix page path bug
 todo: page types
 todo: add gallery
