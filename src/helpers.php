@@ -11,12 +11,12 @@
 		foreach ($path_arr as $index => $segment) {
 			if ($index == 0) {
 				$url_arr[0] = [
-					'url'  => url($path_arr[0]),
+					'url'   => url($path_arr[0]),
 					'title' => $title_arr[0]
 				];
 			} else {
 				$url_arr[] = [
-					'url'  => $url_arr[$index - 1]['url'] . "/" . $segment,
+					'url'   => $url_arr[$index - 1]['url'] . "/" . $segment,
 					'title' => $title_arr[$index]
 				];
 			}
@@ -25,3 +25,8 @@
 		return $url_arr;
 	}
 
+	function slugify($str) {
+		$slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $str);
+
+		return strtolower($slug);
+	}
