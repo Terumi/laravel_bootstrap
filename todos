@@ -8,8 +8,8 @@ done: canonical url
 done: page title
 done: admin - page hierarchy
 done: home page
+done: fix page path bug
 todo: check conditional page section
-todo: fix page path bug
 todo: page types
 todo: add gallery
 todo: add news
