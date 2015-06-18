@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeToPageTable extends Migration {
+class AddPathToPageTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddTypeToPageTable extends Migration {
 	{
 		Schema::table('pages', function($table)
 		{
-			$table->integer('type')->default(0);
+			$table->string('path', 255)->default('');
 		});
 	}
 
@@ -27,7 +27,7 @@ class AddTypeToPageTable extends Migration {
 	{
 		Schema::table('pages', function($table)
 		{
-			$table->dropColumn('type');
+			$table->dropColumn('path');
 		});
 	}
 

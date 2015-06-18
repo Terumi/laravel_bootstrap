@@ -17,12 +17,11 @@ class Page extends Model {
 		'meta_content',
 		'meta_title',
 		'meta_description',
-		'meta_canonical'
+		'meta_canonical',
+		'path',
+		'type'
 	];
 
-	public function getPageTypeAttribute() {
-		return Config::get('page_types')[$this->attributes['type']];
-	}
 
 	public function getParentPageNameAttribute() {
 		$parent = Page::find($this->attributes['parent_id']);
@@ -31,6 +30,13 @@ class Page extends Model {
 
 		return "None";
 	}
+
+	public function getPageTypeAttribute() {
+		$type = Config::get('page_types')[$this->attributes['type']];
+
+		return strtolower($type);
+	}
+
 
 	public function subPages() {
 		return $this->hasMany('App\Page', 'parent_id');
@@ -67,6 +73,6 @@ class Page extends Model {
 		if ($this->attributes['parent_id'] == 0)
 			return $this->attributes['title'];
 
-		return $this->parent->title_path. '/' . $this->attributes['title'];
+		return $this->parent->title_path . '/' . $this->attributes['title'];
 	}
 }

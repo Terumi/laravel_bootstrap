@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\StorePageRequest;
 use App\Page;
 use App\Repositories\PageRepository;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -17,6 +18,7 @@ class PageController extends Controller {
 
 	public function index() {
 		$pages = $this->repository->getTopLevelPages();
+
 		return view('admin.pages.index')->with('pages', $pages);
 	}
 
@@ -36,7 +38,10 @@ class PageController extends Controller {
 		$path = explode('/', $slug);
 		$page = $this->repository->findSubPageByTree($path);
 
-		return view('pages.page')->with('page', $page);
+		if ($page->page_type == 'category')
+			return view('pages.' . $page->page_type)->with('page', $page)->with('children', $page->subPages);
+
+		return view('pages.' . $page->page_type)->with('page', $page);
 	}
 
 	public function showChild($parent_slug, $slug) {
