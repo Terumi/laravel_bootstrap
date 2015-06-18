@@ -14,7 +14,7 @@ return [
 	*/
 
 	'paths' => [
-		realpath(base_path('resources/views'))
+		realpath(base_path(getenv('CUSTOM_VIEW_FOLDER')?: 'resources/views'))
 	],
 
 	/*

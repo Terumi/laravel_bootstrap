@@ -3,4 +3,4 @@
 .env
 .idea
 /config/site_info.php
-
+/resources/custom_views
