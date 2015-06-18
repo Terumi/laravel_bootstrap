@@ -35,6 +35,7 @@ class PageController extends Controller {
 	public function show($slug) {
 		$path = explode('/', $slug);
 		$page = $this->repository->findSubPageByTree($path);
+
 		return view('pages.page')->with('page', $page);
 	}
 

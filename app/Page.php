@@ -62,4 +62,11 @@ class Page extends Model {
 
 		return $this->parent->URI . '/' . $this->attributes['slug'];
 	}
+
+	public function getTitlePathAttribute() {
+		if ($this->attributes['parent_id'] == 0)
+			return $this->attributes['title'];
+
+		return $this->parent->title_path. '/' . $this->attributes['title'];
+	}
 }
