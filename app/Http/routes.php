@@ -40,4 +40,4 @@
 
 	// other pages
 	Route::get('{slug}', 'PageController@show')->where('slug', '.+');
-
+	Route::post('send-email', 'EmailController@sendEmail');
